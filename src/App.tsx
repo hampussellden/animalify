@@ -3,6 +3,7 @@ import { mockAnimals } from './assets/animals'
 import './App.css'
 import AnimalSelect from './components/AnimalSelect';
 import Card from './components/Card';
+import CreateNewAnimal from './components/CreateNewAnimal';
 import { Animal } from './types';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <main>
         { animalOne && <Card animal={animalOne} />}
         { animalTwo && <Card animal={animalTwo} />}
+        { animalOne && animalTwo ? <CreateNewAnimal selectedAnimal1={animalOne} selectedAnimal2={animalTwo}/> : <></>}
       </main>
     </>
   )
