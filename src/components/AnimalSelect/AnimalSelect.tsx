@@ -1,15 +1,18 @@
 
-import {AnimalSelector } from '../../types';
+import { SelectProps } from '../../types';
 
-const AnimalSelect = (props: AnimalSelector) => {
-    const {selectName, selectId, animals, onChange} = props;
+const AnimalSelect = (props: SelectProps) => {
+    const {selectName, animals, onChange} = props;
+
+    const animalOption = animals.map((animal, i) => (
+        <option key={i} value={animal.name}>{animal.name}</option>
+    ));
+
 return (
-    <select name={selectName} id={selectId} onChange={(e) => onChange(
+    <select name={selectName} onChange={(e) => onChange(
         animals.find((animal) => animal.name === e.target.value)
         )}>
-        {animals.map((animal, i) => (
-            <option key={i} value={animal.name}>{animal.name}</option>
-        ))}
+            {animalOption}
     </select>
 )
 };

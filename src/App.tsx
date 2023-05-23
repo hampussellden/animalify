@@ -12,13 +12,13 @@ function App() {
   useEffect(() => {
     console.log({animalOne})
     console.log({animalTwo})
-  }, [animalOne,animalTwo]);
+  }, [animalOne, animalTwo]);
 
   return (
     <>
     <nav>
-      <AnimalSelect selectName="animalOne-drop-down" selectId="animal-one-select" animals={mockAnimals} onChange={setAnimalOne} />
-      <AnimalSelect selectName="animalTwo-drop-down" selectId="animal-two-select" animals={mockAnimals} onChange={setAnimalTwo} />
+      <AnimalSelect selectName="animalOne-drop-down" animals={mockAnimals} onChange={setAnimalOne} />
+      <AnimalSelect selectName="animalTwo-drop-down" animals={mockAnimals} onChange={setAnimalTwo} />
     </nav>
       <main>
         { animalOne && <Card animal={animalOne} />}

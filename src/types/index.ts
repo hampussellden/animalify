@@ -5,10 +5,11 @@
 //     Bird='Bird',
 //     Mammal='Mammal'
 // }
-const vertebrate = ['Fish','Reptile','Amphibian','Bird','Mammal'] as const
+
+const vertebrate = ['Fish', 'Reptile', 'Amphibian', 'Bird', 'Mammal'] as const
 export type Vertebrate = typeof vertebrate[number]
 
-const patterns = ['dotted','striped','solid','split','spotted','transparent','camouflage'] as const 
+const patterns = ['dotted', 'striped', 'solid', 'split', 'spotted', 'transparent', 'camouflage'] as const
 export type Pattern = typeof patterns[number]
 
 export type ColorScheme = {
@@ -24,9 +25,8 @@ export type Animal = {
     attribute: string[],
 }
 
-export type AnimalSelector = {
+export type SelectProps = {
     selectName: string,
-    selectId: string,
     animals: Animal[]
     onChange?: any
 }
