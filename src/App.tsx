@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { mockAnimals } from './assets/animals'
 import './App.css'
 import AnimalSelect from './components/AnimalSelect';
+import Card from './components/Card';
+import { Animal } from './types';
 
 function App() {
-  const [animalOne, setAnimalOne] = useState();
-  const [animalTwo, setAnimalTwo] = useState();
+  const [animalOne, setAnimalOne] = useState<Animal>();
+  const [animalTwo, setAnimalTwo] = useState<Animal>();
+
+  useEffect(() => {
+    console.log({animalOne})
+    console.log({animalTwo})
+  }, [animalOne,animalTwo]);
 
   return (
     <>
@@ -14,26 +21,8 @@ function App() {
       <AnimalSelect selectName="animalTwo-drop-down" selectId="animal-two-select" animals={mockAnimals} onChange={setAnimalTwo} />
     </nav>
       <main>
-        <div className='panel'> 
-          <h2>Animal #1</h2>
-          <p>Vertebrae group</p>
-          <ul>
-            <li>Attribute #1</li>
-            <li>Attribute #2</li>
-            <li>Attribute #3</li>
-            <li>Attribute #4</li>
-          </ul>
-        </div>
-        <div className='panel'>
-          <h2>Animal #2</h2>
-          <p>Vertebrae group</p>
-          <ul>
-            <li>Attribute #1</li>
-            <li>Attribute #2</li>
-            <li>Attribute #3</li>
-            <li>Attribute #4</li>
-          </ul>
-        </div>
+        { animalOne && <Card animal={animalOne} />}
+        { animalTwo && <Card animal={animalTwo} />}
       </main>
     </>
   )
