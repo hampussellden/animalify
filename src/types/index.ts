@@ -5,8 +5,8 @@
 //     Bird='Bird',
 //     Mammal='Mammal'
 // }
-const vertebrae = ['Fish','Reptile','Amphibian','Bird','Mammal'] as const
-export type Vertebrae = typeof vertebrae[number]
+const vertebrate = ['Fish','Reptile','Amphibian','Bird','Mammal'] as const
+export type Vertebrate = typeof vertebrate[number]
 
 const patterns = ['dotted','striped','solid','split','spotted','transparent','camouflage'] as const 
 export type Pattern = typeof patterns[number]
@@ -18,10 +18,10 @@ export type ColorScheme = {
 
 export type Animal = {
     name: string,
-    group: Vertebrae,
+    animalGroup: Vertebrate,
     colorScheme: ColorScheme,
     location: string[],
-    attribute: String[],
+    attribute: string[],
 }
 
 export type AnimalSelector = {
