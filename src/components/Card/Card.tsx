@@ -8,8 +8,8 @@ return (
         <h2>{name}</h2>
         <p>{animalGroup}</p>
         <ul>
-            {attribute.map((a:string, i:number) =>{
-                return <li key={i}>{a}</li>
+            {attribute.map((attr, i) =>{
+                return <li key={i}>{attr}</li>
             })}
         </ul>
     </div>
