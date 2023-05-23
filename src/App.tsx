@@ -1,33 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { mockAnimals } from './assets/animals'
 import './App.css'
+import AnimalSelect from './components/AnimalSelect';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [animalOne, setAnimalOne] = useState();
+  const [animalTwo, setAnimalTwo] = useState();
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <nav>
+      <AnimalSelect selectName="animalOne-drop-down" selectId="animal-one-select" animals={mockAnimals} onChange={setAnimalOne} />
+      <AnimalSelect selectName="animalTwo-drop-down" selectId="animal-two-select" animals={mockAnimals} onChange={setAnimalTwo} />
+    </nav>
+      <main>
+        <div className='panel'> 
+          <h2>Animal #1</h2>
+          <p>Vertebrae group</p>
+          <ul>
+            <li>Attribute #1</li>
+            <li>Attribute #2</li>
+            <li>Attribute #3</li>
+            <li>Attribute #4</li>
+          </ul>
+        </div>
+        <div className='panel'>
+          <h2>Animal #2</h2>
+          <p>Vertebrae group</p>
+          <ul>
+            <li>Attribute #1</li>
+            <li>Attribute #2</li>
+            <li>Attribute #3</li>
+            <li>Attribute #4</li>
+          </ul>
+        </div>
+      </main>
     </>
   )
 }
