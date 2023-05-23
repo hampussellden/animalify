@@ -1,11 +1,14 @@
-export enum Vertebrae {
-    Fish='Fish',
-    Reptile='Reptile',
-    Amphibian='Amphibian',
-    Bird='Bird',
-    Mammal='Mammal'
-}
-const patterns = ['dottet','striped','solid','split','spotted','transparent'] as const 
+// export enum Vertebrae {
+//     Fish='Fish',
+//     Reptile='Reptile',
+//     Amphibian='Amphibian',
+//     Bird='Bird',
+//     Mammal='Mammal'
+// }
+const vertebrae = ['Fish','Reptile','Amphibian','Bird','Mammal'] as const
+export type Vertebrae = typeof vertebrae[number]
+
+const patterns = ['dotted','striped','solid','split','spotted','transparent','camouflage'] as const 
 export type Pattern = typeof patterns[number]
 
 export type ColorScheme = {
@@ -15,8 +18,15 @@ export type ColorScheme = {
 
 export type Animal = {
     name: string,
-    vertebrae: Vertebrae,
+    group: Vertebrae,
     colorScheme: ColorScheme,
-    locations: string[],
-    attributes: String[],
+    location: string[],
+    attribute: String[],
+}
+
+export type AnimalSelector = {
+    selectName: string,
+    selectId: string,
+    animals: Animal[]
+    onChange?: any
 }
