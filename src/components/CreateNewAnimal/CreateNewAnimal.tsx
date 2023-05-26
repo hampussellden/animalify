@@ -37,9 +37,6 @@ const CreateNewAnimal = (props: CreateAnimalProps) => {
     }
 
     const newAnimalColorScheme = ():ColorScheme => {
-        let colors: string[] = [];
-        let patterns: Patterns[];
-
         let newColorScheme:ColorScheme = {
             color: [],
             pattern: [],
