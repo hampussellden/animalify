@@ -25,12 +25,8 @@ export type Animal = {
     attribute: string[],
 }
 
-export type NewAnimal = {
-    name: string,
-    animalGroup: string,
-    colorScheme: ColorScheme,
-    location: string[],
-    attribute: string[],
+export type NewAnimal = Animal & {
+    parents: Animal[],
 }
 
 export type SelectProps = {

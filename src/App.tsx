@@ -31,10 +31,12 @@ function App() {
         <main>
           { animalOne && <Card animal={animalOne} />}
           { animalTwo && <Card animal={animalTwo} />}
-          { animalOne && animalTwo ? <CreateNewAnimal selectedAnimal1={animalOne} selectedAnimal2={animalTwo}/> : <></>}
         </main>
+        <section>
+          { animalOne && animalTwo ? <CreateNewAnimal selectedAnimal1={animalOne} selectedAnimal2={animalTwo}/> : <></>}
+        </section>
       <section>
-        {animalOne && <OpenAI animal={animalOne}/>}
+        {/* {animalOne && <OpenAI animal={animalOne}/>} */}
       </section>
     </QueryClientProvider>
   )
