@@ -31,11 +31,21 @@ export type NewAnimal = Animal & {
 
 export type SelectProps = {
     selectName: string,
-    animals: Animal[]
-    onChange?: any
+    animals: Animal[],
+    onChange?: any,
 }
 
-export type CreateAnimalProps = {
+export type SelectListProps = {
+    animals?: Animal[],
+    children?: React.ReactNode,
+}
+
+export type SelectListItemProps = {
+    animals: Animal[],
+    onClick: any,
+    handleSelected: string | undefined,
+}
+export type AnimalMutationProps = {
     selectedAnimal1: Animal,
     selectedAnimal2: Animal,
 }
