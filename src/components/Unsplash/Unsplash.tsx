@@ -1,33 +1,77 @@
-// import React from 'react';
-// import { useQuery } from '@tanstack/react-query';
-// import { Animal } from '../../types';
+import { useQuery } from "@tanstack/react-query";
+import styled from "styled-components";
 
-// const getImage = (name:string,ACCESS_KEY:string) => {
-//     const {isLoading, error, data}:any = useQuery({
-//         queryKey: ['unsplash'],
-//         queryFn: () => fetch(`https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&query=${name},animal&orientation=squarish`).then((res) => res.json())
-//     });
-//     if (!isLoading){
-//         return data.urls.small as string;
-//     }
-//     if(error){
-//         return 'error';
-//     }
-// };
+const ImageContainer = styled.img`
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+`;
 
-// const Unsplash = (props: {name:string, onChange:any}) => {
-//     const ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
-//     const name = props.name;
+const LoadingContainer = styled.div`
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8e8e8e;
+    animation: pulse 0.9s ease-out infinite;
 
-//     const animalPic = getImage(name,ACCESS_KEY);
-//     console.log(animalPic);
-// return (
-// <>
-// { animalPic &&
-//     <img src={animalPic} alt="unsplash" onChange={animalPic}/>
-// }
-// </>
-// );
-// };
-// export default Unsplash;
+    div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    @keyframes pulse {
+        0% {
+            background-color: #8e8e8e;
+        }
+        50% {
+            background-color: #787070;
+        }
+        100% {
+            background-color: #8e8e8e;
+        }
+    }
+`;
+
+const Unsplash = (props: { name: string }) => {
+    const ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+    const name = props.name;
+
+    const { isLoading, error, data } = useQuery(["unsplash", name], () =>
+        fetch(`https://api.unsplash.com/search/photos/?client_id=${ACCESS_KEY}&query=${name}&per_page=1&orientation=landscape`).then((res) => res.json())
+    );
+
+    if (isLoading) {
+        return (
+            <LoadingContainer>
+                <div>Loading...</div>
+            </LoadingContainer>
+        );
+    }
+
+    if (error) {
+        return (
+            <LoadingContainer>
+                <div>Error: {error.message}</div>
+            </LoadingContainer>
+        );
+    }
+
+    if (data && data.results && data.results.length > 0) {
+        const imageUrl = data.results[0].urls.thumb;
+        const imageAlt = data.results[0].alt_description;
+
+        return <ImageContainer src={imageUrl} alt={imageAlt} loading="lazy" />;
+    }
+
+    return null;
+};
+
+export default Unsplash;
