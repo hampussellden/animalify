@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 import { mockAnimals } from "./assets/animals";
-import { Animal } from "./types";
+import { Animal,NewAnimal } from "./types";
 
 // import AnimalSelect from "./components/AnimalSelect";
 // import Card from "./components/Card";
@@ -16,7 +16,7 @@ import OpenAI from './components/OpenAI';
 function App() {
     const [animalOne, setAnimalOne] = useState<Animal>();
     const [animalTwo, setAnimalTwo] = useState<Animal>();
-    const [newAnimal, setNewAnimal] = useState<Animal>();
+    const [newAnimal, setNewAnimal] = useState<NewAnimal>();
 
     useEffect(() => {
         console.log(animalOne?.name);
@@ -24,6 +24,10 @@ function App() {
         console.log(newAnimal?.name);
     }, [animalOne, animalTwo,newAnimal]);
 
+    useEffect(() => {
+        setNewAnimal(undefined);
+    }, [animalOne, animalTwo]);
+    
     return (
         <>
             <Header />
@@ -45,16 +49,12 @@ function App() {
                         <AnimalListItem onClick={setAnimalTwo} animals={mockAnimals} handleSelected={animalTwo?.name} />
                     </AnimalSelectList>
                 </section>
-
-                <section>{animalOne && animalTwo ? <AnimalMutation selectedAnimal1={animalOne} selectedAnimal2={animalTwo} setNewAnimal={setNewAnimal}/> : <></>}</section>
-
-                {/* <AnimalSelect selectName="animalOne-drop-down" animals={mockAnimals} onChange={setAnimalOne} /> */}
-                {/* <AnimalSelect selectName="animalTwo-drop-down" animals={mockAnimals} onChange={setAnimalTwo} /> */}
-                {/* {animalOne && <Card animal={animalOne} />}
-            {animalTwo && <Card animal={animalTwo} />} */}
+                <section className='animal-mutation'>
+                    {animalOne && animalTwo ? <AnimalMutation selectedAnimal1={animalOne} selectedAnimal2={animalTwo} setNewAnimal={setNewAnimal}/> : <></>}
+                </section>
             </main>
 
-            <section>{(animalOne && animalTwo && newAnimal) && <OpenAI animal={animalOne}/>}</section>
+            <section className='ai-container'>{(animalOne && animalTwo && newAnimal) && <OpenAI animal={newAnimal}/>}</section>
         </>
     );
 }

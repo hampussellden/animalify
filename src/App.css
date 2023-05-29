@@ -90,3 +90,14 @@ li {
         opacity: 1;
     }
 }
+
+section.animal-mutation {
+    height: 50vh;
+} 
+section.ai-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+}
