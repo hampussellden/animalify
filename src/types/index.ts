@@ -48,6 +48,7 @@ export type SelectListItemProps = {
 export type AnimalMutationProps = {
     selectedAnimal1: Animal,
     selectedAnimal2: Animal,
+    setNewAnimal: any,
 }
 
 // export const colors: string[] = [];

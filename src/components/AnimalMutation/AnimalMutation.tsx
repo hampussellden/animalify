@@ -1,9 +1,16 @@
 import { ColorScheme, NewAnimal, AnimalMutationProps, Vertebrate } from "../../types";
-// import styled from "styled-components";
+import { useState } from "react";
+import styled from "styled-components";
+
+const NewAnimalCard = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 const AnimalMutation = (props: AnimalMutationProps) => {
+    const [newAnimalLoaded, setNewAnimalLoaded] = useState<boolean>(false);
     const { selectedAnimal1, selectedAnimal2 } = props;
-
+    const createNewAnimal = () => {
     const newName = () => {
         let count = 0;
         count += Math.floor(Math.random() * 3);
@@ -97,7 +104,6 @@ const AnimalMutation = (props: AnimalMutationProps) => {
         return attributes;
     };
     const newAnimalParents = [selectedAnimal1, selectedAnimal2];
-
     const newAnimal: NewAnimal = {
         name: newName(),
         animalGroup: newAnimalGroup(),
@@ -106,42 +112,48 @@ const AnimalMutation = (props: AnimalMutationProps) => {
         attribute: newAttributes(),
         parents: newAnimalParents,
     };
-
+    return newAnimal;
+}
+    const newAnimal = createNewAnimal();
     return (
-        <div>
-            <p>{newAnimal.name}</p>
-            <p>{newAnimal.animalGroup}</p>
-            <ul>
-                <p>Color</p>
-                {newAnimal.colorScheme.color.map((color, i) => {
-                    return <li key={i}>{color}</li>;
-                })}
-            </ul>
-            <ul>
-                <p>Pattern</p>
-                {newAnimal.colorScheme.pattern.map((pattern, i) => {
-                    return <li key={i}>{pattern}</li>;
-                })}
-            </ul>
-            <ul>
-                <p>Location</p>
-                {newAnimal.location.map((location, i) => {
-                    return <li key={i}>{location}</li>;
-                })}
-            </ul>
-            <ul>
-                <p>Attribute</p>
-                {newAnimal.attribute.map((attribute, i) => {
-                    return <li key={i}>{attribute}</li>;
-                })}
-            </ul>
-            <ul>
-                <p>Parents</p>
-                {newAnimal.parents.map((parent, i) => {
-                    return <li key={i}>{parent.name}</li>;
-                })}
-            </ul>
-        </div>
+        <>
+            <button onClick={() => {props.setNewAnimal(newAnimal),setNewAnimalLoaded(true)}}> Generate new Animal </button>
+            { newAnimalLoaded && 
+            <NewAnimalCard>
+                <p>{newAnimal.name}</p>
+                <p>{newAnimal.animalGroup}</p>
+                <ul>
+                    <p>Color</p>
+                    {newAnimal.colorScheme.color.map((color, i) => {
+                        return <li key={i}>{color}</li>;
+                    })}
+                </ul>
+                <ul>
+                    <p>Pattern</p>
+                    {newAnimal.colorScheme.pattern.map((pattern, i) => {
+                        return <li key={i}>{pattern}</li>;
+                    })}
+                </ul>
+                <ul>
+                    <p>Location</p>
+                    {newAnimal.location.map((location, i) => {
+                        return <li key={i}>{location}</li>;
+                    })}
+                </ul>
+                <ul>
+                    <p>Attribute</p>
+                    {newAnimal.attribute.map((attribute, i) => {
+                        return <li key={i}>{attribute}</li>;
+                    })}
+                </ul>
+                <ul>
+                    <p>Parents</p>
+                    {newAnimal.parents.map((parent, i) => {
+                        return <li key={i}>{parent.name}</li>;
+                    })}
+                </ul>
+            </NewAnimalCard>}
+        </>
     );
 };
 export default AnimalMutation;

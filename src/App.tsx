@@ -10,17 +10,19 @@ import Header from "./components/Header";
 import AnimalMutation from "./components/AnimalMutation";
 import AnimalSelectList from "./components/AnimalSelectList";
 import AnimalListItem from "./components/AnimalListItem";
+import OpenAI from './components/OpenAI';
 
-// import OpenAI from './components/OpenAI';
 
 function App() {
     const [animalOne, setAnimalOne] = useState<Animal>();
     const [animalTwo, setAnimalTwo] = useState<Animal>();
+    const [newAnimal, setNewAnimal] = useState<Animal>();
 
     useEffect(() => {
         console.log(animalOne?.name);
         console.log(animalTwo?.name);
-    }, [animalOne, animalTwo]);
+        console.log(newAnimal?.name);
+    }, [animalOne, animalTwo,newAnimal]);
 
     return (
         <>
@@ -44,7 +46,7 @@ function App() {
                     </AnimalSelectList>
                 </section>
 
-                <section>{animalOne && animalTwo ? <AnimalMutation selectedAnimal1={animalOne} selectedAnimal2={animalTwo} /> : <></>}</section>
+                <section>{animalOne && animalTwo ? <AnimalMutation selectedAnimal1={animalOne} selectedAnimal2={animalTwo} setNewAnimal={setNewAnimal}/> : <></>}</section>
 
                 {/* <AnimalSelect selectName="animalOne-drop-down" animals={mockAnimals} onChange={setAnimalOne} /> */}
                 {/* <AnimalSelect selectName="animalTwo-drop-down" animals={mockAnimals} onChange={setAnimalTwo} /> */}
@@ -52,7 +54,7 @@ function App() {
             {animalTwo && <Card animal={animalTwo} />} */}
             </main>
 
-            <section>{/* {animalOne && <OpenAI animal={animalOne}/>} */}</section>
+            <section>{(animalOne && animalTwo && newAnimal) && <OpenAI animal={animalOne}/>}</section>
         </>
     );
 }
