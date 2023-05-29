@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
+import { Animal } from "../../types";
 
 const ImageContainer = styled.img`
     aspect-ratio: 1 / 1;
@@ -47,6 +48,14 @@ const Unsplash = (props: { name: string }) => {
     const { isLoading, error, data } = useQuery(["unsplash", name], () =>
         fetch(`https://api.unsplash.com/search/photos/?client_id=${ACCESS_KEY}&query=${name}&per_page=1&orientation=landscape`).then((res) => res.json())
     );
+
+    // const { isLoading, error, data } = useQuery<Animal[]>({
+    //     queryKey: ["unsplash-image"],
+    //     queryFn: async () => {
+    //         return fetch(`https://api.unsplash.com/search/photos/?client_id=${ACCESS_KEY}&query=${name}&per_page=1&orientation=landscape`).then((res) => res.json());
+    //     },
+    //     refetchOnWindowFocus: false,
+    // });
 
     if (isLoading) {
         return (

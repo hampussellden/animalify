@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./App.css";
 
 import { mockAnimals } from "./assets/animals";
@@ -14,7 +13,6 @@ import AnimalListItem from "./components/AnimalListItem";
 
 // import OpenAI from './components/OpenAI';
 
-const queryClient = new QueryClient();
 function App() {
     const [animalOne, setAnimalOne] = useState<Animal>();
     const [animalTwo, setAnimalTwo] = useState<Animal>();
@@ -25,7 +23,7 @@ function App() {
     }, [animalOne, animalTwo]);
 
     return (
-        <QueryClientProvider client={queryClient}>
+        <>
             <Header />
             <main>
                 <section className="hero">
@@ -51,11 +49,11 @@ function App() {
                 {/* <AnimalSelect selectName="animalOne-drop-down" animals={mockAnimals} onChange={setAnimalOne} /> */}
                 {/* <AnimalSelect selectName="animalTwo-drop-down" animals={mockAnimals} onChange={setAnimalTwo} /> */}
                 {/* {animalOne && <Card animal={animalOne} />}
-                {animalTwo && <Card animal={animalTwo} />} */}
+            {animalTwo && <Card animal={animalTwo} />} */}
             </main>
 
             <section>{/* {animalOne && <OpenAI animal={animalOne}/>} */}</section>
-        </QueryClientProvider>
+        </>
     );
 }
 
