@@ -9,12 +9,12 @@
 const vertebrate = ['Fish', 'Reptile', 'Amphibian', 'Bird', 'Mammal'] as const
 export type Vertebrate = typeof vertebrate[number]
 
-// const patterns = ['dotted', 'striped', 'solid', 'split', 'spotted', 'transparent', 'camouflage'] as const
-// export type Patterns = typeof patterns[number]
+const pattern = ['dotted', 'striped', 'solid', 'split', 'spotted', 'transparent', 'camouflage'] as const
+export type Pattern = (typeof pattern)[number]
 
 export type ColorScheme = {
     color: string[],
-    pattern: string[]
+    pattern: Pattern[]
 }
 
 export type Animal = {
