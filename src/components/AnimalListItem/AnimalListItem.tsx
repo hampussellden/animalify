@@ -1,6 +1,7 @@
-import { SelectListItemProps } from "../../types";
 import styled from "styled-components";
 import Unsplash from "../Unsplash/Unsplash";
+import { Animal } from '../../types';
+import React from 'react';
 
 const ListItem = styled.li`
     box-sizing: border-box;
@@ -70,10 +71,16 @@ const ImageWrapper = styled.div`
     display: flex;
 `;
 
+type SelectListItemProps = {
+    animals: Animal[],
+    onClick: React.Dispatch<React.SetStateAction<Animal | undefined>>,
+    handleSelected: string | undefined,
+}
+
 const AnimalListItem = (props: SelectListItemProps) => {
     const { animals, onClick, handleSelected } = props;
 
-    const handleClick = (value: object) => {
+    const handleClick = (value: Animal) => {
         onClick(value);
     };
 

@@ -1,4 +1,3 @@
-import { SelectListProps } from "../../types";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
@@ -13,6 +12,10 @@ const StyledList = styled.ul`
     list-style: none;
     background-color: transparent;
 `;
+
+type SelectListProps = {
+    children: React.ReactNode,
+}
 
 const AnimalSelectList: React.FC<SelectListProps> = ({ children }) => {
     return (

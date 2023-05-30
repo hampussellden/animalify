@@ -1,11 +1,3 @@
-// export enum Vertebrae {
-//     Fish='Fish',
-//     Reptile='Reptile',
-//     Amphibian='Amphibian',
-//     Bird='Bird',
-//     Mammal='Mammal'
-// }
-
 const vertebrate = ['Fish', 'Reptile', 'Amphibian', 'Bird', 'Mammal'] as const
 export type Vertebrate = typeof vertebrate[number]
 
@@ -28,35 +20,3 @@ export type Animal = {
 export type NewAnimal = Animal & {
     parents: Animal[],
 }
-
-export type SelectProps = {
-    selectName: string,
-    animals: Animal[],
-    onChange?: any,
-}
-
-export type SelectListProps = {
-    animals?: Animal[],
-    children?: React.ReactNode,
-}
-
-export type SelectListItemProps = {
-    animals: Animal[],
-    onClick: any,
-    handleSelected: string | undefined,
-}
-export type AnimalMutationProps = {
-    selectedAnimal1: Animal,
-    selectedAnimal2: Animal,
-    setNewAnimal: any,
-}
-
-// export const colors: string[] = [];
-
-// export const mapColors = mockAnimals.map((animal) => {
-//     animal.colorScheme.color.map((c) => {
-//         if (colors.indexOf(c) === -1) {
-//             colors.push(c)
-//         }
-//     })
-// })
