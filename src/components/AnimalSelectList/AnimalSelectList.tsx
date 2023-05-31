@@ -14,8 +14,8 @@ const StyledList = styled.ul`
 `;
 
 type SelectListProps = {
-    children: React.ReactNode,
-}
+    children: React.ReactNode;
+};
 
 const AnimalSelectList: React.FC<SelectListProps> = ({ children }) => {
     return (

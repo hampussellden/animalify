@@ -14,7 +14,7 @@ main {
 }
 section.hero {
     width: 100%;
-    height: 75vh;
+    height: 87vh;
     padding-top: 3.8rem;
     display: flex;
     justify-content: center;
@@ -71,7 +71,6 @@ section.hero .content-wrapper > p {
 section.animal-selection {
     width: 100%;
     max-width: 1130px;
-    height: 100vh;
     padding-top: 3.8rem;
 }
 
@@ -91,13 +90,21 @@ li {
     }
 }
 
-section.animal-mutation {
-    height: 50vh;
-} 
-section.ai-container{
+section.mutation-section {
     width: 100%;
+    min-height: 100vh;
+    padding-top: 3.8rem;
+    margin: 0 1rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+/* section.ai-container {
+    width: 100%;
+    padding-top: 3.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 4rem;
-}
+} */

@@ -74,7 +74,7 @@ const Unsplash = (props: { name: string }) => {
     }
 
     if (data && data.results && data.results.length > 0) {
-        const imageUrl = data.results[0].urls.thumb;
+        const imageUrl = data.results[0].urls.small;
         const imageAlt = data.results[0].alt_description;
 
         return <ImageContainer src={imageUrl} alt={imageAlt} loading="lazy" />;
