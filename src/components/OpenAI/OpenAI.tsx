@@ -11,6 +11,9 @@ const MutateButton = styled.button`
     padding: 1rem 2rem;
     color: white;
     background-color: rgba(18, 6, 5, 0.725);
+    &:hover {
+        background-color: rgba(18, 6, 5, 0.3);
+    }
 `;
 const AnswerContainer = styled.div`
     background-color: rgba(18, 6, 5, 0.722);
@@ -23,13 +26,21 @@ const AnswerContainer = styled.div`
 type OpenAIProps = {
     animal: NewAnimal;
 };
+type RequestStructure = {
+  method: string;
+  headers: { "Content-Type": string };
+  body: string;
+}
+type ResponseData = {
+  success: boolean;
+  message: string;
+}
 
 const OpenAI = (props: OpenAIProps) => {
     const [prompt, updatePrompt] = useState<string | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(false);
     const [answer, setAnswer] = useState<string | undefined>(undefined);
-    const { animal } = props;
-    // console.log({animal})
+
     const makePrompt = (animal: NewAnimal) => {
         return `Write a short story about the newly discovers animal ${animal.name}. It is a cross breed from the ${animal.parents[0].name} and ${animal.parents[1].name}. It has the colors of ${animal.colorScheme.color[0]} with ${animal.colorScheme.pattern[0]} patterns. Key attributes include ${animal.attribute[0]}. It lives in/on ${animal.location[0]}}.`;
     };
@@ -57,7 +68,7 @@ const OpenAI = (props: OpenAIProps) => {
             try {
                 setLoading(true);
 
-                const requestOptions = {
+                const requestOptions:RequestStructure = {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ prompt }),
@@ -68,10 +79,8 @@ const OpenAI = (props: OpenAIProps) => {
                 if (!res.ok) {
                     throw new Error("Something went wrong. Fetch failed.");
                 }
-
-                const { message } = await res.json();
-
-                setAnswer(message);
+                const data :ResponseData = await res.json();
+                setAnswer(data.message);
             } catch (err) {
                 console.error("error", err);
                 setLoading(false);
