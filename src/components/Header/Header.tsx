@@ -6,12 +6,15 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    z-index: 10;
 
     h1 {
+        pointer-events: none;
         font-family: Helvetica, sans-serif;
         font-size: 1.5rem;
         font-weight: 100;
         letter-spacing: 0.25rem;
+        color: #d0adf0;
         padding-left: 1rem;
         text-transform: uppercase;
         position: relative;
@@ -39,6 +42,7 @@ const ListItem = styled.li`
         text-decoration: underline;
     }
     a {
+        color: #d0adf0;
         text-decoration: none;
         letter-spacing: 0.1rem;
     }
@@ -54,10 +58,10 @@ const Header = () => {
                 <nav>
                     <NavBar className="navbar">
                         <ListItem className="navbar-item">
-                            <a href="#">HOME</a>
+                            <a href="#home">HOME</a>
                         </ListItem>
                         <ListItem className="navbar-item">
-                            <a href="#">MUTATION</a>
+                            <a href="#mutation">MUTATION</a>
                         </ListItem>
                         <ListItem className="navbar-item">
                             <a href="#">ABOUT</a>
