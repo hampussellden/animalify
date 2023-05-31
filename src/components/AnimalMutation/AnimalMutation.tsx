@@ -10,6 +10,9 @@ const NewAnimalButton = styled.button`
     padding: 1rem 2rem;
     color: white;
     background-color: rgba(18, 6, 5, 0.725);
+    &:hover {
+      background-color: rgba(18, 6, 5, 0.3);
+    }
 `;
 const NewAnimalCard = styled.div`
     display: flex;
@@ -39,8 +42,8 @@ const AnimalMutation = (props: AnimalMutationProps) => {
     const [newAnimalLoaded, setNewAnimalLoaded] = useState<boolean>(false);
     const { selectedAnimal1, selectedAnimal2 } = props;
 
-    const createNewAnimal = () => {
-        const newName = () => {
+    const createNewAnimal = ():NewAnimal => {
+        const newName = ():string => {
             let count = 0;
             count += Math.floor(Math.random() * 3);
             let name: string;
@@ -100,7 +103,7 @@ const AnimalMutation = (props: AnimalMutationProps) => {
             });
             return newColorScheme;
         };
-        const newLocation = () => {
+        const newLocation = ():string[] => {
             let locations: string[] = [];
 
             selectedAnimal1.location.map((loc) => {
@@ -132,7 +135,7 @@ const AnimalMutation = (props: AnimalMutationProps) => {
 
             return attributes;
         };
-        const newAnimalParents = [selectedAnimal1, selectedAnimal2];
+        const newAnimalParents:Animal[] = [selectedAnimal1, selectedAnimal2];
         const newAnimal: NewAnimal = {
             name: newName(),
             animalGroup: newAnimalGroup(),
