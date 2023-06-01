@@ -129,30 +129,14 @@ const OpenAI = (props: OpenAIProps) => {
     }, [prompt]);
     return (
         <>
-            {/* <h2>Hello World</h2>; */}
             <MutateButton
-                // disabled={loading}
-                // style={{
-                //   // backgroundImage: loading ? `url(${loadingIndicator})` : `url(${lens})`,
-                // }}
-                // onChange={(e) => updatePrompt(mockPrompt)}
                 onClick={() => {
-                    updatePrompt(makePrompt(props.animal));
+                    updatePrompt(makePrompt(animal));
                 }}
             >
                 Learn more
             </MutateButton>
-            {/* <input
-                      type="text"
-                      className="spotlight__input"
-                      placeholder="Ask me anything.."
-                      disabled={loading}
-                      style={{
-                          // backgroundImage: loading ? `url(${loadingIndicator})` : `url(${lens})`,
-                        }}
-                        onChange={(e) => updatePrompt(e.target.value)}
-                        onKeyDown={(e) => sendPrompt(e)}
-                    /> */}
+            {loading && <p>Loading...</p>}
             {answer !== undefined ? (
                 <AnswerContainer className="answer-container">
                     <h6>A story about {animal.name}</h6>
@@ -161,12 +145,6 @@ const OpenAI = (props: OpenAIProps) => {
             ) : (
                 <></>
             )}
-            {/* (
-                        <AnswerContainer>
-                            {" "}
-                            <p>{answer}</p>
-                        </AnswerContainer>
-                    )} */}
         </>
     );
 };
