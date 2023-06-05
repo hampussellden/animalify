@@ -130,8 +130,6 @@ const AnimalListItem = (props: SelectListItemProps) => {
     };
 
     const handleClassSelected = (animal: Animal) => {
-        console.log(animal);
-
         if (handleSelected === animal.name) {
             return "selected";
         }
