@@ -21,7 +21,7 @@ const ListItem = styled.li`
     :hover {
         cursor: pointer;
         transform: translateY(0.25rem);
-        box-shadow: 0 0.15rem 0.4rem #0000009c;
+        box-shadow: 0 0.1rem 0.4rem #00000080;
     }
 
     :hover img {
@@ -67,7 +67,7 @@ const ListItem = styled.li`
         height: 100%;
         object-fit: cover;
         object-position: bottom;
-        filter: saturate(0.2);
+        /* filter: saturate(0.2); */
         transition: scale 0.15s ease-in;
     }
 
@@ -83,7 +83,6 @@ const ListItem = styled.li`
     /* Indicator for selected card */
     &.selected {
         transform: translateY(0.25rem);
-        filter: saturate(1);
         box-shadow: 0 0 10px #e395f2d6;
     }
 `;
@@ -102,6 +101,7 @@ const Indicator = styled.div`
     background-color: #d0adf0b1;
     bottom: 0;
     position: absolute;
+    overflow: hidden;
 
     /* Indicator for selected card */
     &.selected {
@@ -155,7 +155,6 @@ const AnimalListItem = (props: SelectListItemProps) => {
                         onClick={() => {
                             handleClick(animal);
                         }}
-                        // className={handleSelected === animal.name ? "selected" : ""}
                         className={`${handleClassSelected(animal)} ${handleClassScrollLimit()}`}
                         key={i}
                         value={animal.name}
