@@ -4,7 +4,6 @@ import "./App.css";
 import { mockAnimals } from "./assets/animals";
 import { Animal, NewAnimal } from "./types";
 
-// import AnimalSelect from "./components/AnimalSelect";
 import Header from "./components/Header";
 import AnimalMutation from "./components/AnimalMutation";
 import AnimalSelectList from "./components/AnimalSelectList";
@@ -15,12 +14,6 @@ function App() {
     const [animalOne, setAnimalOne] = useState<Animal>();
     const [animalTwo, setAnimalTwo] = useState<Animal>();
     const [newAnimal, setNewAnimal] = useState<NewAnimal>();
-
-    // useEffect(() => {
-    //     console.log(animalOne?.name);
-    //     console.log(animalTwo?.name);
-    console.log(newAnimal?.name);
-    // }, [animalOne, animalTwo,newAnimal]);
 
     useEffect(() => {
         setNewAnimal(undefined);
@@ -52,8 +45,6 @@ function App() {
                     {animalOne && animalTwo && newAnimal && <OpenAI animal={newAnimal} />}
                 </section>
             </main>
-
-            {/* <section className="ai-container">{animalOne && animalTwo && newAnimal && <OpenAI animal={newAnimal} />}</section> */}
         </>
     );
 }
