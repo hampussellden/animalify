@@ -18,6 +18,7 @@ const StyledHeader = styled.header`
         padding-left: 1rem;
         text-transform: uppercase;
         position: relative;
+        z-index: 10;
     }
 
     h1 > span {
@@ -25,6 +26,22 @@ const StyledHeader = styled.header`
         font-style: italic;
         transform: translateX(-0.425rem) skewX(-8deg);
         position: absolute;
+    }
+
+    > div.hover {
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        background-color: transparent;
+        position: absolute;
+        top: -100%;
+        transition: background-color, top, 0.2s ease-out;
+    }
+
+    :hover div.hover {
+        background-color: #24242479;
+        top: 0;
+        backdrop-filter: blur(3px);
     }
 `;
 
@@ -37,14 +54,16 @@ const NavBar = styled.ul`
 
 const ListItem = styled.li`
     font-size: 1.5rem;
+    z-index: 10;
 
-    :hover a {
-        text-decoration: underline;
-    }
     a {
         color: #d0adf0;
         text-decoration: none;
-        letter-spacing: 0.1rem;
+        letter-spacing: 0.2rem;
+    }
+
+    :hover a {
+        text-decoration: underline;
     }
 `;
 
@@ -68,6 +87,7 @@ const Header = () => {
                         </ListItem>
                     </NavBar>
                 </nav>
+                <div className="hover"></div>
             </StyledHeader>
         </>
     );
