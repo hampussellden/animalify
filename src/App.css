@@ -38,7 +38,6 @@ section.hero .content-wrapper span {
     background-color: #120605b9;
     font-size: 10rem;
     font-weight: 100;
-    /* color: #d0adf0; */
     color: #f0f0eb;
     position: relative;
     pointer-events: none;
@@ -100,11 +99,3 @@ section.mutation-section {
     align-items: center;
     gap: 1rem;
 }
-/* section.ai-container {
-    width: 100%;
-    padding-top: 3.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4rem;
-} */

@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { NewAnimal } from "../../types";
 import styled from "styled-components";
-// import lens from "./assets/searchicon.png";
-// import loadingIndicator from "./assets/loading.gif";
 
 const MutateButton = styled.div`
-    /* margin-top: 1rem; */
     width: 32.25rem;
     border-radius: 0.1rem;
     display: flex;
@@ -45,12 +42,6 @@ const AnswerContainer = styled.div`
         letter-spacing: 0.1rem;
         padding-bottom: 0.5rem;
     }
-    /* background-color: rgba(18, 6, 5, 0.722);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 1rem;
-    max-width: 60vw; */
 `;
 type OpenAIProps = {
     animal: NewAnimal;

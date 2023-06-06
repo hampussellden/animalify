@@ -10,7 +10,7 @@
     background: linear-gradient(to top, #74ebd5, transparent), url(https://grainy-gradients.vercel.app/noise.svg);
 
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
+    color: #ffffffde;
     background-color: var(--background-color);
 
     font-synthesis: none;
